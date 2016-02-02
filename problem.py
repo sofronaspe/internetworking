@@ -1,4 +1,4 @@
-import random
+import random, math
 ip = ".".join(map(str, (random.randint(0, 255) for x in range(4))))
 networksNeeded = random.randint(1,16)
 n = ip.split('.')
@@ -37,5 +37,9 @@ if int(subnetGuess) == subnetCount:
 else:
     print 'Incorrect, ' + subnetCount + ' subnetworks are needed'
 
-
-usableHosts = 2 **
+usableHosts = math.log(subnetCount,2) - 2
+hostGuess = raw_input('\nHow many usable hosts can are there?  ')
+if int(hostGuess) == usableHosts:
+    print 'Correct'
+else:
+    print 'Incorrect, there are ' + usableHosts + " usable hosts"
