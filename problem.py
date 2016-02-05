@@ -1,6 +1,6 @@
 import random, math
-ip = str(random.randint(0,223) + '.' + random.randint(0,255) + '.' + random.randint(0,255) + '.' + random.randint(0,255))
-ip = ".".join(map(str, (random.randint(0, 255) for x in range(4))))
+ip = str(random.randint(0,223)) + '.' + str(random.randint(0,255)) + '.' + str(random.randint(0,255)) + '.' + str(random.randint(0,255))
+#ip = ".".join(map(str, (random.randint(0, 255) for x in range(4))))
 # networksNeeded = random.randint(1,16)
 networksNeeded = 10
 n = ip.split('.')
@@ -78,3 +78,7 @@ elif ipClass == 'c':
     mask = '255.'+ str(2 ** subnetSize - 1) + '0.0'
 else:
     print 'Something went wrong'
+if maskGuess == mask:
+    print 'Correct'
+else:
+    print 'Incorrect, the mask is ' + mask
