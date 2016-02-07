@@ -4,7 +4,6 @@ networksNeeded = int(raw_input("How many networks do you want to make? "))
 n = ip.split('.')
 
 def findClass(x):
-    print x
     if 1 <= x <= 127:
         return 'a'
     if 128 <= x <= 191:
@@ -51,4 +50,13 @@ hostCount = 2 ** hostSize - 2
 print 'There are ' + str(hostCount) + ' usable hosts'
 raw_input('Press Enter to view table')
 printTable()
+mask = ''
+if ipClass == 'a':
+    mask = '255.255.255.'+ str(2 ** subnetSize - 1)
+elif ipClass == 'b':
+    mask = '255.255.'+ str(2 ** subnetSize - 1) + '.0'
+elif ipClass == 'c':
+    mask = '255.'+ str(2 ** subnetSize - 1) + '.0.0'
+else:
+    print 'Something went wrong'
 print 'The subnet mask is ' + mask

@@ -6,7 +6,6 @@ networksNeeded = random.randint(1,16)
 n = ip.split('.')
 
 def findClass(x):
-    print x
     if 1 <= x <= 127:
         return 'a'
     if 128 <= x <= 191:
