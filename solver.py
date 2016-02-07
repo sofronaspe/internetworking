@@ -1,8 +1,6 @@
 import random, math
-ip = str(random.randint(0,223)) + '.' + str(random.randint(0,255)) + '.' + str(random.randint(0,255)) + '.' + str(random.randint(0,255))
-#ip = ".".join(map(str, (random.randint(0, 255) for x in range(4))))
-networksNeeded = random.randint(1,16)
-
+ip = raw_input("What is the ip? ")
+networksNeeded = int(raw_input("How many networks do you want to make? "))
 n = ip.split('.')
 
 def findClass(x):
@@ -40,45 +38,17 @@ def printTable():
 print 'The IP address is ' + ip + "\nYou need " + str(networksNeeded) + " subnetworks"
 
 ipClass = findClass(int(n[0]))
-
-classGuess = raw_input('\nWhat is the class of the IP?  ')
-classGuess.lower()
-if classGuess == ipClass:
-    print 'Correct'
-else:
-    print 'Incorrect, the class is ' + ipClass
+print 'The class IP is ' + ipClass
 
 subNetCount = 2 ** len("{0:b}".format(networksNeeded))
-subnetGuess = raw_input('\nHow many subnetworks will be created?  ')
-
-if int(subnetGuess) == subNetCount:
-    print 'Correct'
-else:
-    print 'Incorrect, ' + subNetCount + ' subnetworks are needed'
+print 'The subnet count is ' + str(subNetCount)
 
 subnetSize = int(math.log(subNetCount,2))
 hostSize = 8-subnetSize
 NAHost = '0' * hostSize
 BAHost = '1' * hostSize
 hostCount = 2 ** hostSize - 2
-hostGuess = raw_input('\nHow many usable hosts are there?  ')
-if int(hostGuess) == hostCount:
-    print 'Correct'
-else:
-    print 'Incorrect, there are ' + str(hostCount) + ' usable hosts'
+print 'There are ' + str(hostCount) + ' usable hosts'
 raw_input('Press Enter to view table')
 printTable()
-maskGuess = raw_input('What will the subnet mask be (whole IP)? ')
-mask = ''
-if ipClass == 'a':
-    mask = '255.255.255.'+ str(2 ** subnetSize - 1)
-elif ipClass == 'b':
-    mask = '255.255.'+ str(2 ** subnetSize - 1) + '.0'
-elif ipClass == 'c':
-    mask = '255.'+ str(2 ** subnetSize - 1) + '0.0'
-else:
-    print 'Something went wrong'
-if maskGuess == mask:
-    print 'Correct'
-else:
-    print 'Incorrect, the mask is ' + mask
+print 'The subnet mask is ' + mask
