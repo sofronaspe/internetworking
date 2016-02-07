@@ -25,7 +25,7 @@ def printTable():
         sub = "{0:b}".format(s)
         ndec = int(sub + NAHost,2)
         bdec = int(sub + BAHost,2)
-        r = '.' + str(ndec + 1) + ' - .' + str(bdec + 1)
+        r = '.' + str(ndec + 1) + ' - .' + str(bdec - 1)
         table[i] = [s, sub.zfill(subnetSize),NAHost,ndec,sub.zfill(subnetSize),BAHost,bdec,r]
     table.insert(0,['Subnet',"N subnet", "N host", "=", "B subnet", "B host", "=", "Range"])
 
